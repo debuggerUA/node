@@ -21,7 +21,7 @@ class ReqHandler(tornado.web.RequestHandler):
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write('<html><body><form action="/" method="post"><input type="text" name="key"><input type="text" name="value"><input type="submit" value="post"></form></body></html>')
+        self.write('<html><body><form action="/" method="post"><input type="text" name="key"><br><input type="text" name="value"><br><input type="submit" value="Put"></form></body></html>')
     def post(self):
         base[self.get_argument("key")] = self.get_argument("value")
         self.redirect('/')
