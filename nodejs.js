@@ -10,16 +10,11 @@ http.createServer(function (req, res) {
 	if (req.method == 'GET') {
 			res.writeHead(200, {'Content-Type': 'application/json'});
   			parsedUri = url.parse(req.url, parseQueryString = true);
-  			if (parsedUri.pathname.slice(1) != '' && parsedUri.pathname.slice(1) != 'favicon.ico') {
+  			if (parsedUri.pathname.slice(1) != '') {
 					client.get(parsedUri.pathname.slice(1), function(err, response){
 						res.write(JSON.stringify({'key': response.toString(), 'success': true}));
 						res.end();
 						});
-  			}
-  			else {
-					resp = {'success': true};
-					res.write(JSON.stringify(resp));
-					res.end();
   			}
 	} 
 	if(req.method == 'POST')
